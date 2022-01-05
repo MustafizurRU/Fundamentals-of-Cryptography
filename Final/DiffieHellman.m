@@ -9,7 +9,11 @@ p = input('Enter Prime Number P = ');
 g = [];
 for i=1:p-1
     for j=1:p-1
-        g(i,j) = mod(power(i,j),p);
+        if j==1
+            g(i,j) = mod(i^j,p);
+        else
+            g(i,j) = mod(g(i,j-1)*i, p);
+        end
     end
     
 end
@@ -20,7 +24,7 @@ for i=1:p-1
         root = [root i];
     end
 end
-disp('Primitive roots of the prime number : ');
+fprintf('%s has %s Primitive roots :',num2str(p),num2str(length(root)));
 disp(root);
 g = input('Select any primitive root : ');
 %% for X Key generated
